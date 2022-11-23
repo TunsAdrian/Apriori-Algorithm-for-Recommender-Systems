@@ -1,0 +1,20 @@
+Apriori Algorithm for Recommender Systems 
+
+This project is about implementing the Apriori algorithm and applying it to mine frequent itemsets for movie recommendation.
+
+You are required to implement the algorithm from scratch!
+
+Input: The provided input file (movies.txt) is based on the MovieLens dataset[1]. It contains the favourite movies of 8892 users. Each line in the file corresponds to a user and represents a list of movies the user likes. An example: Avengers: Infinity War - Part II;Jurassic World: Fallen Kingdom In the example above, the corresponding user likes the movies “Avengers: Infinity War - Part II” and “Jurassic World: Fallen Kingdom”. Output: You need to implement the Apriori algorithm and use it to mine sets of movies that are frequent in the input data. After implementing the Apriori algorithm, please set the relative minimum support to 0.05 and run it on the 8892 lists of movies. In other words, you need to extract all the itemsets that have an absolute support larger than 444. 
+
+(a) Output all the length-1 frequent movies with their absolute supports into a text file named “oneItems.txt” and place it in the root of your zip file. Every line corresponds to exactly one frequent movie and should be in the following format: Support:movie For example, suppose a movie (e.g. Bohemian Rhapsody) has an absolute support 503, then the line 
+corresponding to this frequent item set in “oneItems.txt” should be: 503:Bohemian Rhapsody
+
+ (b) Please write all the frequent itemsets along with their absolute supports into a text file named “patterns.txt” and place it in the root of your zip file. Every line corresponds to exactly one frequent itemset and should be in the following format: support:movie 1;movie 2;movie 3. For example, suppose an itemset (Bohemian Rhapsody;Aquaman) has an absolute support 446, then the line corresponding to this frequent itemset in “patterns.txt” should be: 446:Bohemian Rhapsody;Aquaman 
+
+(c) Imagine you should recommend a movie to a user. You know that the user likes the movies “Ant-Man and the Wasp” and “Spider-Man: Far from Home”. Based on the result of the Apriori algorithm, give a movie recommendation for this user by maximizing the confidence that the user will like the movie. Explain your choice and report the confidence score for your recommendation.
+
+
+(e) Implement a simple Graphical User Interface GUI which allows the user to:
+start the mining of  frequent itemsets for movie recommendation.
+choose which each length itemset with the corresponding to be displayed
+type the movie he/she likes to receive a movie recommendation.
