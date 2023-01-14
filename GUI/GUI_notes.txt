@@ -1,0 +1,5 @@
+I suggest we take the genre for all the movies from https://www.imdb.com/interfaces/ 
+so that our interface not only performs great Apriori recommendations, but can also offer 
+alternatives if the title is not in our list.
+Furthermore, we should also make sure that the input field is flexible in recognizing variations of the
+input as movie titles.
