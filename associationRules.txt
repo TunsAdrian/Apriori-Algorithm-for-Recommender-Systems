@@ -1,0 +1,71 @@
+0.997988:Avengers: Infinity War - Part II;Incredibles 2;Deadpool 2;Ant-Man and the Wasp->Avengers: Infinity War - Part I
+0.994141:Spider-Man: Into the Spider-Verse;Incredibles 2;Deadpool 2;Ant-Man and the Wasp->Avengers: Infinity War - Part I
+0.993776:Spider-Man: Into the Spider-Verse;Deadpool 2;Captain Marvel;Ant-Man and the Wasp->Avengers: Infinity War - Part I
+0.991684:Avengers: Infinity War - Part II;Deadpool 2;Spider-Man: Far from Home;Ant-Man and the Wasp->Avengers: Infinity War - Part I
+0.991649:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Incredibles 2;Ant-Man and the Wasp->Avengers: Infinity War - Part I
+0.991511:Avengers: Infinity War - Part II;Deadpool 2;Captain Marvel;Ant-Man and the Wasp->Avengers: Infinity War - Part I
+0.991266:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Spider-Man: Far from Home;Captain Marvel->Avengers: Infinity War - Part I
+0.989201:Avengers: Infinity War - Part II;Deadpool 2;Spider-Man: Far from Home;Captain Marvel->Avengers: Infinity War - Part I
+0.989107:Captain Marvel;Ant-Man and the Wasp;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.988962:Captain Marvel;Spider-Man: Into the Spider-Verse;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.987085:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Captain Marvel->Avengers: Infinity War - Part I
+0.987069:Captain Marvel;Deadpool 2;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.985612:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Deadpool 2;Captain Marvel->Avengers: Infinity War - Part I
+0.984547:Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.983333:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Deadpool 2;Ant-Man and the Wasp->Avengers: Infinity War - Part I
+0.98022:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Spider-Man: Far from Home->Avengers: Infinity War - Part I
+0.979742:Spider-Man: Into the Spider-Verse;Deadpool 2;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.979466:Ant-Man and the Wasp;Deadpool 2;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.976035:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Spider-Man: Far from Home;Captain Marvel->Avengers: Infinity War - Part I
+0.975862:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Incredibles 2;Deadpool 2->Avengers: Infinity War - Part I
+0.958559:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Deadpool 2;Spider-Man: Far from Home->Avengers: Infinity War - Part I
+0.916797:Ant-Man and the Wasp;Deadpool 2;Captain Marvel;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.91453:Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Captain Marvel;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.910299:Spider-Man: Into the Spider-Verse;Deadpool 2;Captain Marvel;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.844248:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Deadpool 2
+0.830343:Spider-Man: Into the Spider-Verse;Incredibles 2;Ant-Man and the Wasp;Avengers: Infinity War - Part I->Deadpool 2
+0.826667:Avengers: Infinity War - Part II;Incredibles 2;Ant-Man and the Wasp;Avengers: Infinity War - Part I->Deadpool 2
+0.818803:Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Captain Marvel;Avengers: Infinity War - Part I->Deadpool 2
+0.810619:Avengers: Infinity War - Part II;Captain Marvel;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Deadpool 2
+0.808511:Avengers: Infinity War - Part II;Deadpool 2;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.808219:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Avengers: Infinity War - Part I->Deadpool 2
+0.80354:Avengers: Infinity War - Part II;Captain Marvel;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.80354:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Captain Marvel
+0.798906:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Captain Marvel;Avengers: Infinity War - Part I->Deadpool 2
+0.795681:Spider-Man: Into the Spider-Verse;Deadpool 2;Captain Marvel;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.79292:Avengers: Infinity War - Part II;Captain Marvel;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.791667:Avengers: Infinity War - Part II;Incredibles 2;Ant-Man and the Wasp;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.789381:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.78877:Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Deadpool 2;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.788124:Avengers: Infinity War - Part II;Deadpool 2;Captain Marvel;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.787204:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Incredibles 2;Avengers: Infinity War - Part I->Deadpool 2
+0.786227:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Captain Marvel;Avengers: Infinity War - Part I->Deadpool 2
+0.774878:Spider-Man: Into the Spider-Verse;Incredibles 2;Ant-Man and the Wasp;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.767575:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Captain Marvel;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.761777:Avengers: Infinity War - Part II;Incredibles 2;Deadpool 2;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.75461:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Deadpool 2
+0.751962:Ant-Man and the Wasp;Deadpool 2;Captain Marvel;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.739541:Avengers: Infinity War - Part II;Deadpool 2;Captain Marvel;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.732877:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Avengers: Infinity War - Part I->Captain Marvel
+0.731874:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Captain Marvel;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.724924:Avengers: Infinity War - Part II;Deadpool 2;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.711701:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Deadpool 2;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.704463:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Deadpool 2;Avengers: Infinity War - Part I->Captain Marvel
+0.700495:Spider-Man: Into the Spider-Verse;Incredibles 2;Deadpool 2;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.696049:Avengers: Infinity War - Part II;Deadpool 2;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Captain Marvel
+0.680481:Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Deadpool 2;Avengers: Infinity War - Part I->Incredibles 2
+0.671504:Ant-Man and the Wasp;Incredibles 2;Deadpool 2;Avengers: Infinity War - Part I->Spider-Man: Into the Spider-Verse
+0.667564:Avengers: Infinity War - Part II;Incredibles 2;Deadpool 2;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.66064:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Incredibles 2;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.654354:Ant-Man and the Wasp;Incredibles 2;Deadpool 2;Avengers: Infinity War - Part I->Avengers: Infinity War - Part II
+0.650685:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Avengers: Infinity War - Part I->Incredibles 2
+0.642755:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Captain Marvel;Avengers: Infinity War - Part I->Spider-Man: Far from Home
+0.640374:Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Deadpool 2;Avengers: Infinity War - Part I->Captain Marvel
+0.635461:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Captain Marvel
+0.632624:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Spider-Man: Far from Home;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.62995:Spider-Man: Into the Spider-Verse;Incredibles 2;Deadpool 2;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.628328:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Deadpool 2;Avengers: Infinity War - Part I->Ant-Man and the Wasp
+0.621067:Avengers: Infinity War - Part II;Ant-Man and the Wasp;Captain Marvel;Avengers: Infinity War - Part I->Spider-Man: Far from Home
+0.618084:Avengers: Infinity War - Part II;Deadpool 2;Captain Marvel;Avengers: Infinity War - Part I->Spider-Man: Far from Home
+0.610959:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Ant-Man and the Wasp;Avengers: Infinity War - Part I->Spider-Man: Far from Home
+0.602769:Avengers: Infinity War - Part II;Spider-Man: Into the Spider-Verse;Deadpool 2;Avengers: Infinity War - Part I->Incredibles 2

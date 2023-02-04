@@ -1,4 +1,6 @@
 import csv
+from operator import itemgetter
+from itertools import combinations
 from collections import Counter
 
 
@@ -28,6 +30,7 @@ def apriori(dataset, min_relative_support):
         for entry in accepted_entries_counter:
             f.write(str(accepted_entries_counter[entry]) + ":" + list(entry)[0])
             f.write('\n')
+    print('1. Length-1 frequent itemsets together with their absolute supports were saved to the file: oneItems.txt')
 
     apriori_result = accepted_entries_counter
     with open('patterns.txt', 'w') as f:
@@ -72,15 +75,76 @@ def apriori(dataset, min_relative_support):
 
             count += 1
             apriori_result = accepted_entries_counter
+    print('2. All frequent itemsets together with their absolute supports were saved to the file: patterns.txt')
 
     return apriori_result
 
 
-# with open('./others/movies-test-subset.txt', 'r') as file:  # uncomment for test purposes
-with open('movies.txt', 'r') as file:
-    csv_reader = csv.reader(file, delimiter=';')
-    # skip header (unneeded row)
-    next(csv_reader)
+# TODO: implement lift, for this probably the patterns file will be needed
+def association_rules(dataset, apriori_result, min_confidence):
+    rules = []
 
-    list_of_csv = list(csv_reader)
-    result = apriori(dataset=list_of_csv, min_relative_support=0.05)
+    for entry in apriori_result:
+        combination_list = [frozenset(i) for i in combinations(entry, len(entry) - 1)]
+
+        for a in combination_list:
+            b = entry - a
+            ab_union = entry
+
+            ab_count = 0
+            a_count = 0
+            b_count = 0
+
+            for row in dataset:
+                temp = set(row)
+
+                if a.issubset(temp):
+                    a_count += 1
+                if b.issubset(temp):
+                    b_count += 1
+                if ab_union.issubset(temp):
+                    ab_count += 1
+
+            if ab_count / a_count >= min_confidence:
+                rules.append([ab_count / a_count, ';'.join(list(a)) + "->" + ';'.join(list(b))])
+            if ab_count / b_count >= min_confidence:
+                rules.append([ab_count / b_count, ';'.join(list(b)) + "->" + ';'.join(list(a))])
+
+    rules.sort(key=itemgetter(0), reverse=True)
+
+    # save the association rules, in the descending order of the confidence percentages
+    with open('associationRules.txt', 'w') as f:
+        for entry in rules:
+            f.write(str(round(entry[0], 6)) + ":" + entry[1])
+            f.write('\n')
+    print('3. The association rules together with their confidences, antecedents and consequents were saved to the file: '
+          'associationRules.txt')
+
+
+def start_data_mining():
+    # with open('./others/movies-test-subset.txt', 'r') as file:  # uncomment for test purposes
+    with open('movies.txt', 'r') as file:
+        csv_reader = csv.reader(file, delimiter=';')
+        # skip header (unneeded row)
+        next(csv_reader)
+
+        list_of_csv = list(csv_reader)
+        apriori_result = apriori(dataset=list_of_csv, min_relative_support=0.05)
+        association_rules(dataset=list_of_csv, apriori_result=apriori_result, min_confidence=0.6)
+
+
+def get_length_itemsets(itemset_length):
+    print('The itemsets of length ' + str(itemset_length) + ' are the following:\n')
+    length_itemset_found = False
+
+    with open("patterns.txt") as f:
+        for line in f:
+            if line.count(';') == itemset_length:
+                length_itemset_found = True
+                print('[' + line.split(';', maxsplit=1)[1][0:-1] + ']')
+
+    if not length_itemset_found:
+        print('No itemset of length ' + str(itemset_length) + ' was found.')
+
+
+start_data_mining()
