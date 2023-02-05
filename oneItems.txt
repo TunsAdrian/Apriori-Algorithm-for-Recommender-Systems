@@ -24,7 +24,7 @@
 1278:Hereditary
 2729:Incredibles 2
 1898:Isle of Dogs
-731:John Wick: Chapter 3 – Parabellum
+731:John Wick: Chapter 3 - Parabellum
 792:Joker
 887:Jurassic World: Fallen Kingdom
 488:Love, Simon

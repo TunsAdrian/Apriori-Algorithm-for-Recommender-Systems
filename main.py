@@ -117,14 +117,15 @@ def compute_association_rules(dataset, apriori_result, min_confidence):
         for entry in rules:
             f.write(str(round(entry[0], 6)) + ':' + entry[1])
             f.write('\n')
-    print('3. The association rules together with their confidences, antecedents and consequents were saved to the file: '
-          'associationRules.txt')
+    print(
+        '3. The association rules together with their confidences, antecedents and consequents were saved to the file: associationRules.txt')
 
 
 def start_data_mining():
     # with open('./others/movies-test-subset.txt', 'r') as file:  # uncomment for test purposes
     with open('movies.txt', 'r') as file:
         csv_reader = csv.reader(file, delimiter=';')
+
         # skip header (unneeded row)
         next(csv_reader)
 
@@ -145,6 +146,65 @@ def get_length_itemsets(itemset_length):
 
     if not length_itemset_found:
         print('No itemset of length ' + str(itemset_length) + ' was found.')
+
+
+# TODO: if input can't be found as a subset of the rules, start searching for each of them sequentially
+def movie_recommendation():
+    association_rules = []
+    with open('associationRules.txt', 'r') as f:
+        for line in f:
+            rule = line.strip().split(':', maxsplit=1)[1].split('->')
+            association_rules.append([rule[0].split(';'), rule[1].split(';')])
+
+    unique_movies = []
+    with open('oneItems.txt', 'r') as f:
+        for line in f:
+            movie = line.strip().split(':', maxsplit=1)[1]
+            unique_movies.append(movie)
+
+    print('\nWelcome to movie recommendation!\nHere is the list of movies from our database: ' +
+          str(unique_movies)[1:-1] + '\nIf you want to exit the program, input "quit".\n\n')
+
+    while True:
+        print('Input some movies that you enjoy, separating them by a ";":\n')
+        input_list = input()
+
+        if input_list == 'quit' or input_list == 'q':
+            break
+
+        movies = set([j.strip().lower() for j in input_list.split(';')])
+
+        result = None
+        previous_results = []
+        recommendation_found = False
+
+        for i in range(len(association_rules) - 1):
+            rule = association_rules[i]
+
+            if movies.issubset(set([j.lower() for j in rule[0]])):
+                result = str(rule[1])[1:-1]
+
+                if result not in previous_results:
+                    if i == 0:
+                        previous_results.append(result)
+
+                    recommendation_found = True
+                    print('The movie recommendation result: ' + result + '\n')
+
+            # "try again" mechanism
+            if recommendation_found:
+                print('\nShould we try giving a new recommendation? Answer with: "yes" or "no"')
+                try_again_confirmation = input()
+
+                if try_again_confirmation == 'yes' or try_again_confirmation == 'y':
+                    previous_results.append(result)
+                    recommendation_found = False
+                    pass
+                else:
+                    break
+
+        if not recommendation_found:
+            print('We are sorry, but no recommendation could be found for your input.\n')
 
 
 start_data_mining()
