@@ -184,11 +184,7 @@ def movie_recommendation():
             if movies.issubset(set(rule[0])):
                 result = str(rule[1])[1:-1]
 
-                if result not in previous_results:
-                    # store the result as the previous result, for the first iteration
-                    if i == 0:
-                        previous_results.append(result)
-
+                if result.lower() not in previous_results:
                     recommendation_found = True
                     print('The movie recommendation result: ' + result + '\n')
 
@@ -198,14 +194,15 @@ def movie_recommendation():
                 try_again_confirmation = input()
 
                 if try_again_confirmation == 'yes' or try_again_confirmation == 'y':
-                    previous_results.append(result)
+                    previous_results.append(result.lower())
                     recommendation_found = False
                 else:
                     break
 
         # if a recommendation wasn't found for the entire input, start iterating through the input entries and make recommendations for them
         if not recommendation_found and len(movies) > 1:
-            previous_results = []
+            # add the input entries in the previous_results list, after transforming them to the same form
+            previous_results.extend(["'" + j + "'" for j in movies])
 
             for i in range(len(association_rules) - 1):
                 rule = association_rules[i]
@@ -214,10 +211,7 @@ def movie_recommendation():
                     if movie in rule[0]:
                         result = str(rule[1])[1:-1]
 
-                        if result not in previous_results:
-                            if i == 0:
-                                previous_results.append(result)
-
+                        if result.lower() not in previous_results:
                             recommendation_found = True
                             print('The movie recommendation result: ' + result + '\n')
 
@@ -227,7 +221,7 @@ def movie_recommendation():
                         try_again_confirmation = input()
 
                         if try_again_confirmation == 'yes' or try_again_confirmation == 'y':
-                            previous_results.append(result)
+                            previous_results.append(result.lower())
                             recommendation_found = False
                         else:
                             break
