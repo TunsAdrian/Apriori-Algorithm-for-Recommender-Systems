@@ -194,7 +194,7 @@ barleft.pack(side=RIGHT, fill=Y)
 my_list = Listbox(
     listcontainer,
     font=("Times New Roman", int(10.0)),
-    width=40,
+    width=60,
     bd=0,
     yscrollcommand=barleft)
 my_list.pack()
@@ -209,7 +209,7 @@ query = LabelFrame(searchbar, bd=0, bg="#FFFFFF")
 query.grid(row=1, column=1)
 info = Label(
     query,
-    text="Your titles: ",
+    text="Your results: ",
     font=("Times New Roman", int(10.0)),
     bg="#FFFFFF")
 info.grid(row=0, column=0)
@@ -231,31 +231,38 @@ sgs = Label(
 info.grid(row=3, column=0)
 bar = Scrollbar(results, orient=VERTICAL)
 bar.pack(side=RIGHT, fill=Y)
+orbar = Scrollbar(results, orient=HORIZONTAL)
+orbar.pack(side=BOTTOM, fill=X)
 res_list = Listbox(
     results,
     font=("Times New Roman", int(10.0)),
     width=50,
     bg="#FFFFFF",
-    yscrollcommand=bar)
+    yscrollcommand=bar,
+    xscrollcommand=orbar)
 res_list.pack()
 bar.config(command=res_list.yview)
+orbar.config(command=res_list.xview)
+
+bottombuttons=LabelFrame(searchbar, bd=0, bg="#FFFFFF")
+bottombuttons.grid(row=3, column=1)
 
 # clear results button
 clear = Button(
-    searchbar,
+    bottombuttons,
     text="Clear Results",
     font=("Times New Roman", int(10.0)),
     bg="#FFFFFF",
     command=reset)
-clear.grid(row=4, column=1)
+clear.grid(row=0, column=0, padx=5)
 
 # try new suggestions button
 try_again = Button(
-    searchbar,
+    bottombuttons,
     text="Generate new suggestions",
     font=("Times New Roman", int(10.0)),
     bg="#4a7fbe",
     command=reset)
-try_again.grid(row=4, column=2)
+try_again.grid(row=0, column=1, pady=10, padx=5)
 
 home.mainloop()
