@@ -1,6 +1,5 @@
 from tkinter import *
-
-from main import start_data_mining, movie_recommendation, get_length_itemsets
+from main import start_data_mining, get_length_itemsets
 
 
 def start_data_mining_gui():
@@ -13,7 +12,75 @@ def get_length_itemsets_gui(itemset_length):
 
 
 def movie_recommendation_gui():
-    pass
+    res_list.delete(0, END)
+    movies = param
+
+    association_rules = []
+    with open('associationRules.txt', 'r') as f:
+        for line in f:
+            rule = line.strip().split(':', maxsplit=1)[1].split('->')
+            association_rules.append([[i.lower() for i in rule[0].split(';')], rule[1].split(';')])
+
+    unique_movies = []
+    with open('oneItems.txt', 'r') as f:
+        for line in f:
+            movie = line.strip().split(':', maxsplit=1)[1]
+            unique_movies.append(movie)
+
+    # strip the leading/trailing whitespaces and lower case the input
+    movies = set([i.strip().lower() for i in movies])
+
+    result = None
+    previous_results = []
+    recommendation_found = False
+
+    for i in range(len(association_rules) - 1):
+        rule = association_rules[i]
+
+        if movies.issubset(set(rule[0])):
+            result = str(rule[1])[1:-1]
+
+            if result.lower() not in previous_results:
+                recommendation_found = True
+                res_list.insert(END, 'Recommendation: ' + result + '\n')
+
+        # "try again" mechanism
+        if recommendation_found:
+            res_list.insert(END, '\nShould we try giving a new recommendation?')
+
+            try_again_button.wait_variable(try_again_var)
+            previous_results.append(result.lower())
+            recommendation_found = False
+
+    # if a recommendation wasn't found for the entire input, start iterating through the input entries and make recommendations for them
+    if not recommendation_found and len(movies) > 1:
+        # add the input entries in the previous_results list, after transforming them to the same form
+        previous_results.extend(["'" + j + "'" for j in movies])
+
+        for i in range(len(association_rules) - 1):
+            rule = association_rules[i]
+
+            for movie in movies:
+                if movie in rule[0]:
+                    result = str(rule[1])[1:-1]
+
+                    if result.lower() not in previous_results:
+                        recommendation_found = True
+                        res_list.insert(END, 'Recommendation' + result + '\n')
+
+                # "try again" mechanism
+                if recommendation_found:
+                    res_list.insert(END, '\nShould we try giving a new recommendation?')
+
+                    try_again_button.wait_variable(try_again_var)
+                    previous_results.append(result.lower())
+                    recommendation_found = False
+
+            if recommendation_found:
+                break
+
+    if not recommendation_found:
+        res_list.insert(END, 'No recommendation could be found.')
 
 
 # Importing movie list
@@ -80,7 +147,7 @@ instructions.grid(row=0, column=0, columnspan=2)
 # FUNCTIONS
 def lookup(*arg):
     conf.config(state=DISABLED)
-    resmovies = list(movie_recommendation_gui(';'.join(param)))
+    resmovies = list(movie_recommendation_gui_inner(';'.join(param)))
 
 
 # Update the listbox
@@ -112,9 +179,7 @@ def check(e):
 
 
 def cancel():
-    # res_list.delete(0, END)
     intitle.delete(0, END)
-    itset.delete(0, END)
     searching.config(text="")
     param[:] = []
 
@@ -181,7 +246,7 @@ conf = Button(
     font=("Times New Roman", int(10.0)),
     width=10,
     bg="#FFFFFF",
-    command=lookup)
+    command=lambda: movie_recommendation_gui())
 conf.grid(row=1, column=2, padx=2)
 
 # Create a listbox in a frame to use the scrollbar
@@ -244,7 +309,7 @@ res_list.pack()
 bar.config(command=res_list.yview)
 orbar.config(command=res_list.xview)
 
-bottombuttons=LabelFrame(searchbar, bd=0, bg="#FFFFFF")
+bottombuttons = LabelFrame(searchbar, bd=0, bg="#FFFFFF")
 bottombuttons.grid(row=3, column=1)
 
 # clear results button
@@ -257,12 +322,14 @@ clear = Button(
 clear.grid(row=0, column=0, padx=5)
 
 # try new suggestions button
-try_again = Button(
+try_again_var = BooleanVar()
+
+try_again_button = Button(
     bottombuttons,
     text="Generate new suggestions",
     font=("Times New Roman", int(10.0)),
     bg="#4a7fbe",
-    command=reset)
-try_again.grid(row=0, column=1, pady=10, padx=5)
+    command=lambda: try_again_var.set(True))
+try_again_button.grid(row=0, column=1, pady=10, padx=5)
 
 home.mainloop()
