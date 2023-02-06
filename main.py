@@ -2,9 +2,10 @@ import csv
 from operator import itemgetter
 from itertools import combinations
 from collections import Counter
+from tkinter.constants import END
 
 
-def apriori(dataset, min_relative_support):
+def apriori(dataset, min_relative_support, gui_result_area):
     support = int(min_relative_support * len(dataset))
 
     unique_entries = []
@@ -30,7 +31,9 @@ def apriori(dataset, min_relative_support):
         for entry in accepted_entries_counter:
             f.write(str(accepted_entries_counter[entry]) + ':' + list(entry)[0])
             f.write('\n')
-    print('1. Length-1 frequent itemsets together with their absolute supports were saved to the file: oneItems.txt')
+    write_output(
+        '1. Length-1 frequent itemsets together with their absolute supports were saved to the file: oneItems.txt',
+        gui_result_area)
 
     apriori_result = accepted_entries_counter
     with open('patterns.txt', 'w') as f:
@@ -75,13 +78,14 @@ def apriori(dataset, min_relative_support):
 
             count += 1
             apriori_result = accepted_entries_counter
-    print('2. All frequent itemsets together with their absolute supports were saved to the file: patterns.txt')
+    write_output('2. All frequent itemsets together with their absolute supports were saved to the file: patterns.txt',
+                 gui_result_area)
 
     return apriori_result
 
 
 # TODO: implement lift, for this probably the patterns file will be needed
-def compute_association_rules(dataset, apriori_result, min_confidence):
+def compute_association_rules(dataset, apriori_result, min_confidence, gui_result_area):
     rules = []
 
     for entry in apriori_result:
@@ -117,35 +121,38 @@ def compute_association_rules(dataset, apriori_result, min_confidence):
         for entry in rules:
             f.write(str(round(entry[0], 6)) + ':' + entry[1])
             f.write('\n')
-    print(
-        '3. The association rules together with their confidences, antecedents and consequents were saved to the file: associationRules.txt')
+    write_output(
+        '3. The association rules together with their confidences, antecedents and consequents were saved to the file: associationRules.txt',
+        gui_result_area)
 
 
-def start_data_mining():
+def start_data_mining(gui_result_area):
     # with open('./others/movies-test-subset.txt', 'r') as file:  # uncomment for test purposes
     with open('movies.txt', 'r') as file:
+        write_output('Data mining process has started...', gui_result_area)
         csv_reader = csv.reader(file, delimiter=';')
 
         # skip header (unneeded row)
         next(csv_reader)
 
         list_of_csv = list(csv_reader)
-        apriori_result = apriori(dataset=list_of_csv, min_relative_support=0.05)
-        compute_association_rules(dataset=list_of_csv, apriori_result=apriori_result, min_confidence=0.6)
+        apriori_result = apriori(dataset=list_of_csv, min_relative_support=0.05, gui_result_area=gui_result_area)
+        compute_association_rules(dataset=list_of_csv, apriori_result=apriori_result, min_confidence=0.6,
+                                  gui_result_area=gui_result_area)
 
 
-def get_length_itemsets(itemset_length):
-    print('The itemsets of length ' + str(itemset_length) + ' are the following:\n')
+def get_length_itemsets(itemset_length, gui_result_area):
+    write_output('The itemsets of length ' + str(itemset_length) + ' are the following:\n', gui_result_area)
     length_itemset_found = False
 
     with open('patterns.txt', 'r') as f:
         for line in f:
             if line.count(';') == itemset_length:
                 length_itemset_found = True
-                print('[' + line.split(';', maxsplit=1)[1][0:-1] + ']')
+                write_output('[' + line.split(';', maxsplit=1)[1][0:-1] + ']', gui_result_area)
 
     if not length_itemset_found:
-        print('No itemset of length ' + str(itemset_length) + ' was found.')
+        write_output('No itemset of length ' + str(itemset_length) + ' was found.', gui_result_area)
 
 
 def movie_recommendation():
@@ -233,7 +240,13 @@ def movie_recommendation():
             print('We are sorry, but no recommendation could be found for your input.')
 
 
+def write_output(text, gui_result_area):
+    if gui_result_area is not None:
+        gui_result_area.insert(END, text)
+    else:
+        print(text)
+
 # The most relevant functions are the following:
-# start_data_mining()  # used to start the actual data mining
-# get_length_itemsets(1)  # used to get the n-length itemsets
-movie_recommendation()  # used to make a movie recommendation
+# start_data_mining(None)  # used to start the actual data mining
+# get_length_itemsets(1, None)  # used to get the n-length itemsets
+# movie_recommendation()  # used to make a movie recommendation

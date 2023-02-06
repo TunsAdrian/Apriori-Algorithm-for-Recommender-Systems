@@ -1,13 +1,20 @@
 from tkinter import *
-from tkinter import ttk
-from PIL import ImageTk, Image
-#from main import start_data_mining, movie_recommendation, get_length_itemsets
-def start_data_mining():
+
+from main import start_data_mining, movie_recommendation, get_length_itemsets
+
+
+def start_data_mining_gui():
+    start_data_mining(gui_result_area=res_list)
+
+
+def get_length_itemsets_gui(itemset_length):
+    res_list.delete(0, END)
+    get_length_itemsets(int(itemset_length), gui_result_area=res_list)
+
+
+def movie_recommendation_gui():
     pass
-def get_length_itemsets():
-    pass
-def movie_recommendation():
-    pass
+
 
 # Importing movie list
 global movies
@@ -19,9 +26,6 @@ global resmovies
 resmovies = []
 global param
 param = []
-global it
-it = 1 #default value for the minimum itemset length
-
 
 home = Tk()
 home.title("Movie Recommender - by IVAP")
@@ -37,7 +41,7 @@ ttl = Label(
     bg="#4a7fbe",
     fg="#FFFFFF",
     font=("Times New Roman", int(55.0), 'bold'))
-ttl.grid(column=0,row=0)
+ttl.grid(column=0, row=0)
 sub = Label(
     textspace,
     text="What will you watch today? Tell us a movie that you like, and we'll suggest you something nice",
@@ -46,15 +50,15 @@ sub = Label(
     font=("Times New Roman", int(22.0), 'bold', 'italic'))
 sub.grid(column=0, columnspan=2, row=1)
 start = Button(
-    textspace, 
+    textspace,
     text="Start Mining",
-    font = ("Times New Roman",int(15.0), "bold"),
+    font=("Times New Roman", int(15.0), "bold"),
     fg="#000000",
-    bg="#FFFFFF", 
+    bg="#FFFFFF",
     pady=2,
     padx=2,
-    command=start_data_mining) 
-start.grid(column=1,row=0)  
+    command=lambda: start_data_mining_gui())
+start.grid(column=1, row=0)
 
 errors = LabelFrame(home, bd=0)
 errors.pack()
@@ -72,17 +76,19 @@ instructions = Label(
     wraplength=maxl)
 instructions.grid(row=0, column=0, columnspan=2)
 
-#FUNCTIONS
+
+# FUNCTIONS
 def lookup(*arg):
-    it = int(itset.get())
     conf.config(state=DISABLED)
-    resmovies = list(movie_recommendation( ';'.join(param )))
-    
+    resmovies = list(movie_recommendation_gui(';'.join(param)))
+
+
 # Update the listbox
 def update(data):
     my_list.delete(0, END)
     for item in data:
         my_list.insert(END, item)
+
 
 # Update entry box with listbox clicked
 def fillandsend(e):
@@ -90,7 +96,7 @@ def fillandsend(e):
     intitle.insert(0, my_list.get(ANCHOR))
     param.append(my_list.get(ANCHOR))
     searching.config(text=param)
-   
+
 
 # Create function to check entry vs listbox
 def check(e):
@@ -104,23 +110,14 @@ def check(e):
                 data.append(item)
     update(data)
 
+
 def cancel():
     # res_list.delete(0, END)
     intitle.delete(0, END)
     itset.delete(0, END)
     searching.config(text="")
     param[:] = []
-    it = 1
 
-def verify():
-    if itset.get() > 0 :
-        it = itset.get()
-    else:
-        err1 = Label(home, text="Illegal Itemset length. Must be a positive integer")
-        err1.pack()
-        itset.delete()
-        it=1
-        return 1
 
 def resupdate(data):
     # Clear the listbox
@@ -129,15 +126,13 @@ def resupdate(data):
     for item in data:
         res_list.insert(END, item)
 
+
 def reset():
     res_list.delete(0, END)
-    intitle.delete(0, END)
-    itset.delete(0, END)
-    res_list.delete(0, END)
+    # intitle.delete(0, END)
     searching.config(text="")
     param[:] = []
     conf.config(state=ACTIVE)
-
 
 
 # Searchbar Elements
@@ -154,7 +149,7 @@ itset = Entry(
     sbar,
     font=("Times New Roman", int(10.0)),
     width=10,
-    bg = "#4a7fbe")
+    bg="#4a7fbe")
 itset.insert(END, '1')
 itset.grid(row=0, column=1, padx=5, pady=5)
 conf_itemset = Button(
@@ -162,8 +157,8 @@ conf_itemset = Button(
     text="Confirm",
     font=("Times New Roman", int(10.0)),
     width=10,
-    bg = "#4a7fbe",
-    command=get_length_itemsets)
+    bg="#4a7fbe",
+    command=lambda: get_length_itemsets_gui(itset.get()))
 conf_itemset.grid(row=0, column=2, padx=2)
 intitle = Entry(
     sbar,
@@ -189,7 +184,6 @@ conf = Button(
     command=lookup)
 conf.grid(row=1, column=2, padx=2)
 
-
 # Create a listbox in a frame to use the scrollbar
 listcontainer = LabelFrame(searchbar)
 listcontainer.grid(row=2, column=0, pady=5)
@@ -210,7 +204,7 @@ update(movies)
 my_list.bind("<<ListboxSelect>>", fillandsend)
 intitle.bind("<KeyRelease>", check)
 
-#Research results header
+# Research results header
 query = LabelFrame(searchbar, bd=0, bg="#FFFFFF")
 query.grid(row=1, column=1)
 info = Label(
@@ -246,13 +240,22 @@ res_list = Listbox(
 res_list.pack()
 bar.config(command=res_list.yview)
 
-#reset button
+# clear results button
 clear = Button(
+    searchbar,
+    text="Clear Results",
+    font=("Times New Roman", int(10.0)),
+    bg="#FFFFFF",
+    command=reset)
+clear.grid(row=4, column=1)
+
+# try new suggestions button
+try_again = Button(
     searchbar,
     text="Generate new suggestions",
     font=("Times New Roman", int(10.0)),
     bg="#4a7fbe",
     command=reset)
-clear.grid(row=4, column=1, pady=10)
+try_again.grid(row=4, column=2)
 
 home.mainloop()
