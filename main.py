@@ -249,4 +249,4 @@ def write_output(text, gui_result_area):
 # The most relevant functions are the following:
 # start_data_mining(None)  # used to start the actual data mining
 # get_length_itemsets(1, None)  # used to get the n-length itemsets
-movie_recommendation()  # used to make a movie recommendation
+# movie_recommendation()  # used to make a movie recommendation
